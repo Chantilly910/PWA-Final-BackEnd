@@ -1,8 +1,9 @@
-import express from 'express';
-import { getFoods } from '../controllers/foodController.js';
+import { Router } from "express";
+import { getAllFoods, getFoodById } from "../controllers/foodController";
 
-const router = express.Router();
+const router = Router();
 
-router.get('/', getFoods);
+router.get("/", getAllFoods);
+router.get("/:id", getFoodById);
 
 export default router;

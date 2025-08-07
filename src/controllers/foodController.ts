@@ -1,11 +1,15 @@
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
+import { foodData } from "../data/seedData";
 
-export const getFoods = (req: Request, res: Response) => {
-    const foods = [
-        { id: 1, name: 'Cheeseburger', category: 'Burgers', price: 5.99 },
-        { id: 2, name: 'Fries', category: 'Sides', price: 2.49 },
-        { id: 3, name: 'Sundae', category: 'Desserts', price: 3.99 },
-        { id: 4, name: 'Cola', category: 'Drinks', price: 1.99 }
-    ];
-    res.json(foods);
+export const getAllFoods = (req: Request, res: Response) => {
+  res.json(foodData);
+};
+
+export const getFoodById = (req: Request, res: Response) => {
+  const food = foodData.find((f) => f.id === req.params.id);
+  if (food) {
+    res.json(food);
+  } else {
+    res.status(404).json({ message: "Food not found" });
+  }
 };

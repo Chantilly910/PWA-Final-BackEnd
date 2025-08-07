@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import database from './config/db';
 import apps from './app';
+import express from 'express';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -22,3 +24,4 @@ startServer().catch((error) => {
   console.error('Error al iniciar la aplicación:', error);
   process.exit(1);
 });
+

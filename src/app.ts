@@ -1,17 +1,11 @@
-import express from 'express';
-import userRoutes from './routes/userRoutes';
-import postRoutes from './routes/postRoutes';
+import express from "express";
+import cors from "cors";
+import foodRoutes from "./routes/foodRoutes";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
-
-app.use('/api/users', userRoutes);
-app.use('/api/posts', postRoutes);
-
-app.get("/",(req, res) => {
-  res.send("API corriendo...");
-});
-
+app.use("/api/foods", foodRoutes);
 
 export default app;
